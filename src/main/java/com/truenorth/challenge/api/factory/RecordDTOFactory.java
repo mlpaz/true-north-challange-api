@@ -13,6 +13,7 @@ public class  RecordDTOFactory {
                 .operationResponse(record.getOperationResponse())
                 .date(record.getCreatedAt())
                 .userBalance(record.getUserBalance())
+                .amount(record.getAmount())
                 .operationResponse(record.getOperationResponse())
                 .build();
         }

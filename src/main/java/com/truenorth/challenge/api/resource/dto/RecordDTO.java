@@ -17,6 +17,8 @@ public class RecordDTO {
 
     private BigDecimal userBalance;
 
+    private BigDecimal amount;
+
     private String operationResponse;
 
     private UUID userId;

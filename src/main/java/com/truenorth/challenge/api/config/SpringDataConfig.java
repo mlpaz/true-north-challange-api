@@ -8,6 +8,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.truenorth.challenge.api.adapter.persistence")
-@EntityScan(basePackages = "com.truenorth.challenge..api.model")
+@EntityScan(basePackages = "com.truenorth.challenge.api.model")
 public class SpringDataConfig {
 }

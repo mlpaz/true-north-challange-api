@@ -8,6 +8,7 @@ import com.truenorth.challenge.api.port.in.LogInCommand;
 import com.truenorth.challenge.api.resource.dto.UserDetailsDTO;
 import com.truenorth.challenge.api.resource.dto.UserTokenDTO;
 import com.truenorth.challenge.api.resource.request.LogInRequest;
+import com.truenorth.challenge.api.service.jwt.JwtService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,11 @@ public class LogIn implements LogInCommand {
     UserJPARepository repository;
 
     @Autowired
-    com.truenorth.challenge.api.service.jwt.JwtService JwtService;
+    JwtService JwtService;
 
     @Override
     public UserTokenDTO execute(LogInRequest request) {
+
         log.info("Try to authenticate user {}", request.getEmail());
         User user = repository.findFirstByEmailAndPassword(request.getEmail(), request.getPassword())
                 .orElseThrow( () -> new UnauthorizedException("Invalid user and password"));
@@ -35,13 +37,14 @@ public class LogIn implements LogInCommand {
         user.setStatus(Status.ACTIVE);
         repository.save(user);
 
-
         String token = JwtService.generateToken(UserDetailsDTO.builder()
                 .email(request.getEmail())
                 .build());
+
         return UserTokenDTO.builder()
                 .id(user.getId())
                 .email(user.getEmail())
+                .credit(user.getCredit())
                 .token(token)
                 .build();
     }

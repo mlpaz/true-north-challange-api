@@ -25,6 +25,12 @@ public class GlobalExceptionHandler {
         return new ErrorDetails(ex.getMessage(), request.getDescription(false));
     }
 
+    @ExceptionHandler(value = {OperationNotAcceptableException.class})
+    @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE)
+    public ErrorDetails operationNotAcceptable(OperationNotAcceptableException ex, WebRequest request) {
+        return new ErrorDetails(ex.getMessage(), request.getDescription(false));
+    }
+
     @ExceptionHandler(value = {UnauthorizedException.class})
     @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
     public ErrorDetails unauthorized(BadRequestException ex, WebRequest request) {

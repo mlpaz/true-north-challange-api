@@ -31,6 +31,8 @@ public class Record {
 
     private BigDecimal userBalance;
 
+    private BigDecimal amount;
+
     private String operationResponse;
 
     private OffsetDateTime createdAt;

@@ -12,9 +12,9 @@ create table users (
 );
 
 INSERT INTO users (created_at, updated_at, deleted_at, email, status, credit, password) VALUES
-(now(), now(), null, 'mlpaz.code@gmail.com', 'INACTIVE', 10000, 'oyFIbMU672dmmZ97fLpf6Q==');
+(now(), now(), null, 'mlpaz.code@gmail.com', 'INACTIVE', 100, 'oyFIbMU672dmmZ97fLpf6Q==');
 INSERT INTO users (created_at, updated_at, deleted_at, email, status, credit, password) VALUES
-(now(), now(), null, 'leon.paz@gmail.com', 'INACTIVE', 5000, 'oyFIbMU672dmmZ97fLpf6Q==');
+(now(), now(), null, 'leon.paz@gmail.com', 'INACTIVE', 5, 'oyFIbMU672dmmZ97fLpf6Q==');
 
 create table operation (
 	id uuid DEFAULT gen_random_uuid(),
@@ -42,6 +42,7 @@ create table record (
 	operation_id uuid NOT NULL,
 	user_id uuid NOT NULL,
 	user_balance decimal NOT NULL,
+	amount decimal NOT NULL,
 	operation_response varchar(255),
     created_at timestamp not null default now(),
     updated_at timestamp not null default now(),

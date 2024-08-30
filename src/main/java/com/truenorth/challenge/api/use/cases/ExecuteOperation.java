@@ -3,6 +3,7 @@ package com.truenorth.challenge.api.use.cases;
 import com.truenorth.challenge.api.adapter.persistence.OperationJPARepository;
 import com.truenorth.challenge.api.adapter.persistence.RecordJPARepository;
 import com.truenorth.challenge.api.adapter.persistence.UserJPARepository;
+import com.truenorth.challenge.api.exceptions.OperationNotAcceptableException;
 import com.truenorth.challenge.api.exceptions.ResourceNotFoundException;
 import com.truenorth.challenge.api.factory.RecordDTOFactory;
 import com.truenorth.challenge.api.model.Operation;
@@ -57,6 +58,9 @@ public class ExecuteOperation implements ExecuteOperationCommand {
 
 
         BigDecimal userBalance = user.getCredit().subtract(operation.getCost());
+        if (BigDecimal.ZERO.compareTo(userBalance) > 0){
+            throw new OperationNotAcceptableException("Insufficient Credit");
+        }
         user.setCredit(userBalance);
         userRepository.save(user);
         log.info("Calculate and update new user credit balance {}", userBalance);
@@ -66,6 +70,7 @@ public class ExecuteOperation implements ExecuteOperationCommand {
                 .userId(user.getId())
                 .operationResponse(operationResponse)
                 .userBalance(userBalance)
+                .amount(operation.getCost())
                 .build();
         Record saveRecord = recordRepository.save(record);
 
