@@ -59,7 +59,7 @@ public class ExecuteOperation implements ExecuteOperationCommand {
 
         BigDecimal userBalance = user.getCredit().subtract(operation.getCost());
         if (BigDecimal.ZERO.compareTo(userBalance) > 0){
-            throw new OperationNotAcceptableException("Insufficient Credit");
+            throw new OperationNotAcceptableException("Operation Amount " + operation.getCost() +", you have insufficient Credit.");
         }
         user.setCredit(userBalance);
         userRepository.save(user);
