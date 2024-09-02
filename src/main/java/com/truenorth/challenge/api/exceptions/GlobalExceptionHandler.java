@@ -31,11 +31,6 @@ public class GlobalExceptionHandler {
         return new ErrorDetails(ex.getMessage(), request.getDescription(false));
     }
 
-    @ExceptionHandler(value = {UnauthorizedException.class})
-    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
-    public ErrorDetails unauthorized(BadRequestException ex, WebRequest request) {
-        return new ErrorDetails(ex.getMessage(), request.getDescription(false));
-    }
 
     @ExceptionHandler(value = {ConstraintViolationException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)

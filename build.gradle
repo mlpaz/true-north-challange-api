@@ -28,6 +28,7 @@ dependencies {
 	implementation group: 'org.flywaydb', name: 'flyway-core'
 	implementation group: 'org.flywaydb', name: 'flyway-database-postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-core:6.2.3'

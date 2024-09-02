@@ -43,7 +43,7 @@ create table record (
 	user_id uuid NOT NULL,
 	user_balance decimal NOT NULL,
 	amount decimal NOT NULL,
-	operation_response varchar(255),
+	operation_response text,
     created_at timestamp not null default now(),
     updated_at timestamp not null default now(),
     deleted_at timestamp,

@@ -29,7 +29,6 @@ public class DeleteRecord implements DeleteRecordCommand {
                 .orElseThrow(() -> new ResourceNotFoundException("Record Not Found"));
         record.setDeletedAt(OffsetDateTime.now());
         recordRepository.save(record);
-
         return RecordDTOFactory.fromModel(record);
     }
 }

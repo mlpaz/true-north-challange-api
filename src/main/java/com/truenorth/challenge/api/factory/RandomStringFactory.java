@@ -9,7 +9,7 @@ import java.util.Map;
 public class RandomStringFactory {
     public final static String NUMBER = "num";
     public final static String LENGTH = "len";
-    public final static String DIGIT = "digit";
+    public final static String DIGITS = "digits";
     public final static String UPPER_ALPHA = "upperalpha";
     public final static String LOWER_ALPHA = "loweralpha";
     public final static String UNIQUE = "unique";
@@ -22,7 +22,7 @@ public class RandomStringFactory {
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put(NUMBER, input.getNumber().toString());
         queryParams.put(LENGTH, input.getLength().toString());
-        queryParams.put(DIGIT, onOff(input.getDigits()));
+        queryParams.put(DIGITS, onOff(input.getDigits()));
         queryParams.put(UPPER_ALPHA, onOff(input.getUpperLetter()));
         queryParams.put(LOWER_ALPHA, onOff(input.getLowerLetter()));
         queryParams.put(UNIQUE, onOff(input.getUnique()));
@@ -35,7 +35,7 @@ public class RandomStringFactory {
         return UriComponentsBuilder.fromHttpUrl(baseUrl + STRINGS_PATH)
                 .queryParam(NUMBER, "{"+ NUMBER +"}")
                 .queryParam(LENGTH, "{"+ LENGTH +"}")
-                .queryParam(DIGIT, "{"+ DIGIT +"}")
+                .queryParam(DIGITS, "{"+ DIGITS +"}")
                 .queryParam(UPPER_ALPHA, "{"+ UPPER_ALPHA +"}")
                 .queryParam(LOWER_ALPHA, "{"+ LOWER_ALPHA +"}")
                 .queryParam(UNIQUE, "{"+ UNIQUE +"}")

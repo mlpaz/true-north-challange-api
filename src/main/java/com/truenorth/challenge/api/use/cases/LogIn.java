@@ -1,7 +1,7 @@
 package com.truenorth.challenge.api.use.cases;
 
 import com.truenorth.challenge.api.adapter.persistence.UserJPARepository;
-import com.truenorth.challenge.api.exceptions.UnauthorizedException;
+import com.truenorth.challenge.api.exceptions.BadRequestException;
 import com.truenorth.challenge.api.model.User;
 import com.truenorth.challenge.api.model.enums.Status;
 import com.truenorth.challenge.api.port.in.LogInCommand;
@@ -25,19 +25,19 @@ public class LogIn implements LogInCommand {
     UserJPARepository repository;
 
     @Autowired
-    JwtService JwtService;
+    JwtService jwtService;
 
     @Override
     public UserTokenDTO execute(LogInRequest request) {
 
         log.info("Try to authenticate user {}", request.getEmail());
         User user = repository.findFirstByEmailAndPassword(request.getEmail(), request.getPassword())
-                .orElseThrow( () -> new UnauthorizedException("Invalid user and password"));
+                .orElseThrow( () -> new BadRequestException("Invalid user and password"));
         log.info("Try to ACTIVE status to user {}", request.getEmail());
         user.setStatus(Status.ACTIVE);
         repository.save(user);
 
-        String token = JwtService.generateToken(UserDetailsDTO.builder()
+        String token = jwtService.generateToken(UserDetailsDTO.builder()
                 .email(request.getEmail())
                 .build());
 

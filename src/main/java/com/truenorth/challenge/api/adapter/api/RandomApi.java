@@ -9,6 +9,7 @@ import java.util.Map;
 @Slf4j
 @Component
 public class RandomApi extends Api<String> {
+
     private final static String BASE_URL = "https://www.random.org";
 
     public RandomApi() {

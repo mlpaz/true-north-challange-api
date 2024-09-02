@@ -27,6 +27,7 @@ public class GetRecords implements GetRecordsCommand {
 
     @Autowired
     RecordJPARepository recordRepository;
+
     @Autowired
     UserJPARepository userRepository;
 
@@ -54,7 +55,7 @@ public class GetRecords implements GetRecordsCommand {
                     .and(RecordSpecifications.lessThanDate(filters.getLessThanDate()));
         }
 
-        Sort sort =  Sort.by(filters.getOrderBy());
+        Sort sort =  Sort.by(filters.getOrderBy()).ascending();
         if (Sort.Direction.DESC.equals(filters.getDirection())){
             sort = sort.descending();
         }
