@@ -7,14 +7,13 @@ data access, security, and database migrations using FlywayDB.
 
 ## Features
 - RESTful Web Services with Spring Boot
-- JPA for data access and manipulation
-- Hibernate Validator for input validation
-- PostgreSQL as the database
-- Database migrations using FlywayDB
-- Security features with Spring Security
-- JWT for authentication
-- API documentation with Springdoc OpenAPI
-- Lombok to reduce boilerplate code
+- `JPA` for data access and manipulation
+- `PostgreSQL` as the database
+- Database migrations using `FlywayDB`
+- Security features with `Spring Security`
+- `JWT` for authentication
+- API documentation with `Springdoc OpenAPI`
+- `Lombok` to reduce boilerplate code
 
 ## Prerequisites
 - Java 11 or higher
@@ -58,3 +57,7 @@ when you deploy the project.
 * `DB_URL` : This is the base jdbc URL of your database.
 * `DB_USERNAME` : The user name of your DB account.
 * `DB_PASSWORD` : The password of your DB account
+
+## Api Documentation
+You can use this [link](https://demo-v1-1-5a33.onrender.com/swagger-ui/index.html) 
+to view the Rest API contract.
