@@ -74,8 +74,6 @@ public class DeleteRecordTest {
         RecordDTO expect = RecordDTOFactory.fromModel(record);
         assertTrue(new ReflectionEquals(expect,"deleteAt")
                 .matches(response));
-
-
     }
 
 
