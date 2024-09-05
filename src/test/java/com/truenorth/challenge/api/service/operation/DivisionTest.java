@@ -55,7 +55,7 @@ public class DivisionTest {
         // When
         BigDecimal response = division.execute(mathInput);
         // Then
-        BigDecimal expect = mathInput.getX().divide(mathInput.getY(), 10, RoundingMode.HALF_UP);
+        BigDecimal expect = mathInput.getX().divide(mathInput.getY(), 10, RoundingMode.HALF_UP).stripTrailingZeros();
         assertEquals(response, expect);
     }
 

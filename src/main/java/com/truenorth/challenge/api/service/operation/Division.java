@@ -25,6 +25,6 @@ public class Division extends AbstractOperation<BigDecimal, MathInput> {
         if (BigDecimal.ZERO.compareTo(request.getY()) == 0){
             throw new BadRequestException("Y cannot be 0");
         }
-        return request.getX().divide(request.getY(), 10, RoundingMode.HALF_UP);
+        return request.getX().divide(request.getY(), 10, RoundingMode.HALF_UP).stripTrailingZeros();
     }
 }
