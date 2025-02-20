@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Operation {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
     @Enumerated(EnumType.STRING)
     OperationType type;

@@ -21,7 +21,7 @@ import java.util.UUID;
 public class Record {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
 
     @ManyToOne

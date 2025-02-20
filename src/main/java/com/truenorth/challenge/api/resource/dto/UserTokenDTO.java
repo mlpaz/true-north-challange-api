@@ -1,14 +1,17 @@
 package com.truenorth.challenge.api.resource.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 
-@Builder
 @Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class UserTokenDTO {
 
     private UUID id;

@@ -7,13 +7,13 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public class UserFactory {
-    private static final String EMAIL ="test@gmail.com";
+    private static final String EMAIL ="mlpaz.code@gmail.com";
     private static final String PASSWORD ="1234";
     private static final BigDecimal CREDIT = BigDecimal.valueOf(100);
     public static LogInRequest  buildLogInRequest(){
         LogInRequest request = new LogInRequest();
         request.setEmail(EMAIL);
-        request.setEmail(PASSWORD);
+        request.setPassword(PASSWORD);
         return request;
     }
 
